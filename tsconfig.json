@@ -55,7 +55,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": false
   },
   "include": [
     "**/*.ts",
