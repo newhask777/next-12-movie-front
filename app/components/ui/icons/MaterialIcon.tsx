@@ -1,15 +1,15 @@
 import { FC } from 'react'
 import * as MaterialIcons from 'react-icons/md'
-
 import { TypeMaterialIconName } from '@/shared/types/icons.types'
-// import { useRenderClient } from '@/hooks/useRenderClient'
 
 const MaterialIcon: FC<{ name: TypeMaterialIconName }> = ({ name }) => {
-	// const { isRenderClient } = useRenderClient()
+  const IconComponent = MaterialIcons[name]
 
-	const IconComponent = MaterialIcons[name]
+  if (!IconComponent) {
+    return <MaterialIcons.MdDragIndicator />
+  }
 
-	return <IconComponent /> || <MaterialIcons.MdDragIndicator />
+  return <IconComponent />
 }
 
 export default MaterialIcon

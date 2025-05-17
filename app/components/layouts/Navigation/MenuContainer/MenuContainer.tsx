@@ -1,10 +1,15 @@
 import { FC } from 'react'
 import Menu from './Menu'
-import { firstMenu } from './menu.data'
+import { firstMenu, userMenu } from './menu.data'
+import GenreMenu from './genres/GenreMenu'
 
 const MenuContainer:FC = () => {
 	return (
-		<Menu menu={firstMenu} />
+		<div>
+			<Menu menu={firstMenu} />
+			<GenreMenu />
+			<Menu menu={userMenu} />
+		</div>
 	)
 }
 
