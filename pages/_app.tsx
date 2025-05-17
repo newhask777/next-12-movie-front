@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 
 import { TypeComponentAuthFields } from '@/shared/types/auth.types'
 
-import '../styles/globals.scss'
+import '@/assets/styles/globals.scss'
 
 type TypeAppProps = AppProps & TypeComponentAuthFields
 
