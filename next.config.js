@@ -16,6 +16,10 @@ const nextConfig = {
 				source: '/uploads/:path*',
 				destination: `http://localhost:4200/uploads/:path*`,
 			},
+			{
+        source: '/.well-known/appspecific/com.chrome.devtools.json',
+        destination: '/404',
+      },
 		]
 	},
 }

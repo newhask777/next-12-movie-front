@@ -1,11 +1,10 @@
-import { IAuthResponse, IEmailPassword,  } from './user.interface'
+import { IAuthResponse, IEmailPassword } from './user.interface'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { errorCatch } from 'api/api.helpers'
 import { toastr } from 'react-redux-toastr'
 
 import { AuthService } from '@/services/auth/auth.service'
 import { toastError } from '@/utils/toast-error'
-
 
 
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(

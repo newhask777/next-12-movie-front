@@ -1,6 +1,6 @@
 import Layout from '@/components/layouts/Layout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import {FC} from 'react'
+import {FC, ReactNode} from 'react'
 
 import ReduxToast from './ReduxToast'
 import { Provider } from 'react-redux'
@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
 	}
 })
 
-const MainProvider:FC = ({children}) => {
+const MainProvider:FC<{ children: ReactNode }> = ({children}) => {
 	return (
 		<HeadProvider>
 			<Provider store={store}>
