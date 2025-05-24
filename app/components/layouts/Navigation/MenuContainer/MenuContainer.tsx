@@ -1,14 +1,19 @@
+import dynamic from 'next/dynamic'
 import { FC } from 'react'
-import Menu from './Menu'
-import { firstMenu, userMenu } from './menu.data'
-import GenreMenu from './genres/GenreMenu'
 
-const MenuContainer:FC = () => {
+import Menu from './Menu'
+import { menu } from './menu.data'
+
+const DynamicGenreMenu = dynamic(() => import('./genres/GenreMenu'), {
+	ssr: false,
+})
+
+const MenuContainer: FC = () => {
 	return (
 		<div>
-			<Menu menu={firstMenu} />
-			<GenreMenu />
-			<Menu menu={userMenu} />
+			<Menu menu={menu} />
+			<DynamicGenreMenu />
+			<Menu menu={{ title: 'General', items: [] }} />
 		</div>
 	)
 }

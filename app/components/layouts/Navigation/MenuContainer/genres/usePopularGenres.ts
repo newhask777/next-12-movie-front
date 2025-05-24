@@ -2,20 +2,26 @@ import { GenreService } from '@/services/genre.service'
 import { useQuery } from '@tanstack/react-query'
 
 import { getGenreUrl } from '@/configs/url.config'
-import { IMenuItem } from '../menu.interface'
+import { IMenuItem } from '../menu.types'
 
 export const usePopularGenres = () => {
-	const {isLoading, data} = useQuery({
+	const { isLoading, data } = useQuery({
 		queryKey: ['popular genre menu'],
 		queryFn: () => {
 			return GenreService.getAll()
 		},
-		select: ({data}) => data.map(genre => ({
-			icon: genre.icon,
-			link: getGenreUrl(genre.slug),
-			title: genre.name
-		} as IMenuItem)).splice(0, 4),
+		select: ({ data }) =>
+			data
+				.map(
+					(genre) =>
+						({
+							icon: genre.icon,
+							link: getGenreUrl(genre.slug),
+							title: genre.name,
+						}) as IMenuItem
+				)
+				.splice(0, 4),
 	})
 
-	return {isLoading, data}
+	return { isLoading, data }
 }

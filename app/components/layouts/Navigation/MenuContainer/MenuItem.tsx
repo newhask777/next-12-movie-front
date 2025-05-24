@@ -1,10 +1,10 @@
+import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import styles from './Menu.module.scss'
-import { IMenuItem } from './menu.interface'
-import MaterialIcon from '@/components/ui/icons/MaterialIcon'
+import { IMenuItem } from './menu.types'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const { asPath } = useRouter()
@@ -16,7 +16,7 @@ const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 			})}
 		>
 			<Link href={item.link}>
-				<MaterialIcon name={item.icon}/>
+				<MaterialIcon name={item.icon} />
 				<span>{item.title}</span>
 			</Link>
 		</li>
