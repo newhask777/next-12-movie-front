@@ -1,15 +1,19 @@
-import { useAuth } from '@/hooks/useAuth'
+import styles from './Auth.module.scss'
 import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IAuthInput } from './auth.interface'
-import { useAuthRedirect } from './useAuthRedirect'
+
 
 import Button from '@/components/ui/form-elements/Button'
 import Heading from '@/components/ui/heading/Heading'
-import Meta from '@/utils/meta/Meta'
-import styles from './Auth.module.scss'
-import AuthFields from './AuthFields'
+
 import { useActions } from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
+
+import { Meta } from '@/utils/meta'
+
+import { IAuthInput } from './auth.interface'
+import { useAuthRedirect } from './useAuthRedirect'
+import AuthFields from './AuthFields'
 
 const Auth: FC = () => {
 	useAuthRedirect()
@@ -19,7 +23,7 @@ const Auth: FC = () => {
 	const [type, setType] = useState<'login' | 'register'>('login')
 
 	const {
-		register: RegisterInput,
+		register: registerInput,
 		handleSubmit,
 		formState,
 		reset,
@@ -28,7 +32,6 @@ const Auth: FC = () => {
 	})
 
 	const { login, register } = useActions()
-
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') login(data)
@@ -42,12 +45,7 @@ const Auth: FC = () => {
 			<section className={styles.wrapper}>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Heading title="Auth" className="mb-6" />
-
-					<AuthFields
-						register={RegisterInput}
-						formState={formState}
-						isPasswordRequired
-					/>
+					<AuthFields register={registerInput} formState={formState} />
 
 					<div className={styles.buttons}>
 						<Button
