@@ -1,9 +1,10 @@
+import Admin from '@/components/screens/admin/Admin'
 import { NextPageAuth } from '@/shared/types/auth.types'
 
 
 const AdminPage: NextPageAuth = () => {
 	return (
-		<div className='text-white'>Admin Panel</div>
+		<Admin />
 	)
 }
 
